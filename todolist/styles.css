@@ -1,0 +1,72 @@
+.todo-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #3a5a40ff;
+  color: #dad7cdff;
+  margin-bottom: 10px;
+}
+
+.delete-button {
+  margin-left: auto;
+  margin-right: 8px;
+  background: none;
+  border: none;
+  color: #dad7cdff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.input-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.not-done {
+  text-decoration: none;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: #dad7cdff;
+  color: #3a5a40ff;
+  border: 2px solid #3a5a40ff;
+  font-family: "SN Pro", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+#add-button {
+  padding: 8px 16px;
+  background-color: #3a5a40ff;
+  color: #dad7cd;
+  border: none;
+  font-family: "SN Pro", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#add-button:hover {
+  background-color: #2d4a33;
+}
+
+/* remove default bullets and left padding from the list */
+.todolist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "SN Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
