@@ -1,0 +1,59 @@
+body {
+  font-family: "SN Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  background-color: #dad7cd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: #3a5a40;
+  margin-bottom: 16px;
+}
+
+/* 5 buttons × (52px + 2×3px margin) = 290px */
+.result-display,
+.input-display {
+  width: 290px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background-color: #3a5a40;
+  color: #dad7cd;
+  font-family: "SN Pro", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  height: 2rem;
+}
+
+.result-display {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  height: 4rem;
+}
+
+.input-buttons {
+  margin-top: 10px;
+}
+
+.input-buttons button {
+  width: 52px;
+  height: 52px;
+  margin: 3px;
+  background-color: #3a5a40;
+  color: #dad7cd;
+  border: none;
+  font-family: "SN Pro", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.input-buttons button:hover {
+  background-color: #dad7cd;
+  color: #3a5a40;
+}
