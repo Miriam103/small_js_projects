@@ -2,8 +2,7 @@ var currentEquation = "";
 var currentNumber = "";
 var inputs = [];
 
-function resolveEquation() {
-  console.log(inputs);
+function resolveEquation(inputs) {
   // calulcate the results of the * and / operator first
   inputs.forEach(function (input, index) {
     if (isNaN(input)) {
@@ -50,8 +49,7 @@ function resolveEquation() {
       }
     }
   });
-
-  document.querySelector(".result-display").textContent = endResult;
+  return endResult;
 }
 
 function addNewInput(text) {
@@ -71,7 +69,8 @@ function addNewInput(text) {
   } else if ("=" === text) {
     inputs.push(currentNumber);
     currentNumber = "";
-    resolveEquation();
+    const endResult = resolveEquation(inputs);
+    document.querySelector(".result-display").textContent = endResult;
   } else if ("C" === text) {
     currentEquation = "";
     currentNumber = "";
@@ -106,18 +105,24 @@ const inputButtons = [
   "+",
 ];
 
-const buttons = document.querySelector(".input-buttons");
-var counter = 0;
 
-inputButtons.forEach(function (text) {
-  const newButton = document.createElement("button");
-  newButton.textContent = text;
-  newButton.addEventListener("click", function (event) {
-    addNewInput(event.target.textContent);
-  });
-  buttons.appendChild(newButton);
-  counter = counter + 1;
-  if (counter % 5 === 0) {
-    buttons.appendChild(document.createElement("br"));
-  }
+
+if (typeof module !== "undefined") {
+  module.exports = { resolveEquation};
+} else {
+  const buttons = document.querySelector(".input-buttons");
+  var counter = 0;
+
+  inputButtons.forEach(function (text) {
+    const newButton = document.createElement("button");
+    newButton.textContent = text;
+    newButton.addEventListener("click", function (event) {
+      addNewInput(event.target.textContent);
+    });
+    buttons.appendChild(newButton);
+    counter = counter + 1;
+    if (counter % 5 === 0) {
+      buttons.appendChild(document.createElement("br"));
+    }
 });
+}
