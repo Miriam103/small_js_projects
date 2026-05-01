@@ -3,53 +3,37 @@ var currentNumber = "";
 var inputs = [];
 
 function resolveEquation(inputs) {
-  // calulcate the results of the * and / operator first
-  inputs.forEach(function (input, index) {
-    if (isNaN(input)) {
-      if (input === "x") {
-        const a = parseFloat(inputs[index - 1]);
-        const b = parseFloat(inputs[index + 1]);
-        const result = a * b;
-        inputs[index - 1] = "o";
-        inputs[index] = "o";
-        inputs[index + 1] = result;
-      } else if (input === "/") {
-        const a = parseFloat(inputs[index - 1]);
-        const b = parseFloat(inputs[index + 1]);
-        const result = a / b;
-        inputs[index + 1] = result;
-        inputs[index - 1] = "o";
-        inputs[index] = "o";
+  for(let i =0;i<=1;i++)
+  {
+    inputs.forEach(function (input, index) {
+      if(input ==="x"){
+        const left = Number(inputs[index-1]);
+        const right = Number(inputs[index+1]);
+        var result = left*right;
+        inputs[index-1]=result;
+        inputs.splice(index,2);
       }
-    }
-  });
-
-  inputs = inputs.filter((element) => element !== "o");
-
-  var endResult = 0;
-  // if only one number left its the end result
-  if (inputs.length === 1) {
-    endResult = inputs[0];
+      else if(input ==="/"){
+        const left = Number(inputs[index-1]);
+        const right = Number(inputs[index+1]);
+        var result = left/right;
+        inputs[index-1]=result;
+        inputs.splice(index,2);
+      }
+    });
   }
-  // otherwise calculate the results of the + and - operator second
-  inputs.forEach(function (input, index) {
-    if (isNaN(input)) {
-      if (input === "+") {
-        const a = parseFloat(inputs[index - 1]);
-        const b = parseFloat(inputs[index + 1]);
-        const result = a + b;
-        endResult = endResult + result;
-        console.log(result);
-      } else if (input === "-") {
-        const a = parseFloat(inputs[index - 1]);
-        const b = parseFloat(inputs[index + 1]);
-        const result = a - b;
-        endResult = endResult + result;
-        console.log(result);
-      }
+
+  result = inputs[0];
+  inputs.forEach(function(input, index){
+    if (input ==="+"){
+      result = Number(result) + Number(inputs[index+1]);
+    }
+    else if(input ==="-"){
+      result = Number(result) -  Number(inputs[index+1]);
     }
   });
-  return endResult;
+
+  return result;
 }
 
 function addNewInput(text) {
@@ -65,7 +49,6 @@ function addNewInput(text) {
     inputs.push(currentNumber);
     currentNumber = "";
     inputs.push(text);
-    console.log(currentEquation);
   } else if ("=" === text) {
     inputs.push(currentNumber);
     currentNumber = "";
@@ -104,8 +87,6 @@ const inputButtons = [
   "C",
   "+",
 ];
-
-
 
 if (typeof module !== "undefined") {
   module.exports = { resolveEquation};

@@ -51,4 +51,16 @@ describe('resolveEquation', () => {
     const result = resolveEquation(['10', '-', '2', 'x', '3', '+', '4']);
     expect(result).toBe(8);
   });
+
+  test('handle bigger numbers (77-27)', () => {
+    const result = resolveEquation(['77','-','27']);
+    expect(result).toBe(50);
+  })
+  
+  test('handle multiplication and division (15 x 2 / 2 = 15', () => {
+    const result = resolveEquation(['15', 'x', '2', '/', '2']);
+    expect(result).toBe(15);
+  })
 });
+
+
